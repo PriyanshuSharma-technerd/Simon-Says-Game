@@ -144,18 +144,18 @@
             // }
     //    });
 
-function startGame() {
-    if (!started) {
-        started = true;
-        levelUp();
-    }
-}
+// function startGame() {
+//     if (!started) {
+//         started = true;
+//         levelUp();
+//     }
+// }
 
-// Desktop support
-document.addEventListener("keypress", startGame);
+// // Desktop support
+// document.addEventListener("keypress", startGame);
 
-// Mobile support
-document.addEventListener("touchstart", startGame, { once: true });
+// // Mobile support
+// document.addEventListener("touchstart", startGame, { once: true });
 
 
         // Function to flash a button (game's turn)
@@ -207,13 +207,19 @@ document.addEventListener("touchstart", startGame, { once: true });
         }
 
         // Function to reset the game state
-        function resetGame() { // Renamed from 'reset' to 'resetGame' for consistency
-            started = false;
-            gameSeq = [];
-            userSeq = [];
-            level = 0;
-           h2.innerText = "Tap anywhere or press any key to start the game"; // Reset status message
-        }
+    function resetGame() {
+    started = false;
+    gameSeq = [];
+    userSeq = [];
+    level = 0;
+
+    nameOverlay.style.display = "flex";
+    document.body.classList.add("blur-bg");
+
+    playerNameInput.value = "";
+
+    h2.innerText = "Enter your name and press Start Game";
+}
         // Name overlay elements
 const nameOverlay = document.getElementById("nameOverlay");
 const startGameBtn = document.getElementById("startGameBtn");
@@ -235,11 +241,15 @@ window.addEventListener("DOMContentLoaded", () => {
 // Start game on name submission
 startGameBtn.addEventListener("click", () => {
     const name = playerNameInput.value.trim();
+
     if (name) {
         playerName = name;
         nameOverlay.style.display = "none";
         document.body.classList.remove("blur-bg");
-        h2.innerText = "Tap anywhere to start the game";
+
+        // Start immediately
+        started = true;
+        levelUp();
     } else {
         alert("Please enter your name to start the game!");
     }
