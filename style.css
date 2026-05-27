@@ -1,0 +1,329 @@
+
+        /* Basic Reset & Body Styling */
+        body {
+            text-align: center;
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: #1a1a2e; /* Dark background */
+            color: #e0e0e0; /* Light text */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow:visible; /* Prevent scroll */
+            transition: background-color 0.3s ease;
+        }
+
+        /* Button Base Styles */
+        .btn {
+            height: 200px; /* Updated from user's CSS */
+            width: 200px; /* Updated from user's CSS */
+            border-radius: 20%; /* Updated from user's CSS */
+            border: 10px solid black; /* Updated from user's CSS */
+            /* Removed margin here to rely on gap property of btn-container */
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 3em;
+            font-weight: bold;
+            color: rgba(255, 255, 255, 0.8);
+            transition: transform 0.1s ease-out, box-shadow 0.1s ease-out;
+        }
+
+        /* Button Container */
+        .btn-container {
+            display: flex;
+            flex-wrap: wrap; /* Allow buttons to wrap */
+            justify-content: center;
+            gap: 20px; /* Adjusted from user's margin for better control */
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            max-width: 480px; /* Max width to contain 2x2 grid (2*200px + 20px gap + 2*20px padding = 460px, so 480px is good) */
+        }
+
+        /* Individual Button Colors */
+        .red {
+            background-color: #d95980; /* Updated from user's CSS */
+        }
+
+        .yellow {
+            background-color: #f99b45; /* Updated from user's CSS */
+        }
+
+        .green {
+            background-color: #63aac0; /* Updated from user's CSS */
+        }
+
+        .purple {
+            background-color: #819ff9; /* Updated from user's CSS */
+        }
+
+        /* Flash Animation */
+        .flash {
+            background-color: white; /* Updated from user's CSS */
+            border-color: white; /* Ensure border also flashes */
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
+        }
+
+        /* User Flash Animation */
+        .userflash {
+            background-color: green; /* Updated from user's CSS */
+            border-color: green; /* Ensure border also flashes */
+            box-shadow: 0 0 30px rgba(0, 255, 0, 0.8);
+        }
+
+        /* Game Over State */
+        body.gameover {
+            background-color: #880808; /* Dark red for game over */
+        }
+
+        /* Headings */
+        h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            color: #e0e0e0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        h2 {
+            font-size: 1.5em;
+            margin-top: 0;
+            margin-bottom: 30px;
+            color: #b0b0b0;
+        }
+
+        /* High Score Display */
+        .high-score {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            color: #a0a0ff; /* Light blue for high score */
+            font-weight: bold;
+        }
+
+        .btn:active {
+            transform: scale(0.95);
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Message Box Styling */
+        .message-box-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .message-box-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .message-box-content {
+            background-color: #2c3e50; /* Dark blue-grey */
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.7);
+            max-width: 90%;
+            width: 400px;
+            transform: translateY(-20px);
+            transition: transform 0.3s ease;
+            display: flex; /* Added for button layout */
+            flex-direction: column; /* Added for button layout */
+            gap: 15px; /* Space between elements */
+        }
+
+        .message-box-overlay.show .message-box-content {
+            transform: translateY(0);
+        }
+
+        .message-box-content h3 {
+            margin-top: 0;
+            font-size: 2em;
+            color: #e0e0e0;
+            margin-bottom: 20px;
+        }
+
+        .message-box-content p {
+            font-size: 1.2em;
+            color: #b0b0b0;
+            margin-bottom: 30px;
+        }
+
+        .message-box-content button {
+            background-color: #3498db; /* Flat UI Blue */
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+            width: fit-content; /* Make button fit content */
+            margin: 0 auto; /* Center buttons */
+        }
+
+        .message-box-content button:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        /* New button for Gemini API feature */
+        .message-box-content .gemini-btn {
+            background-color: #8e44ad; /* Amethyst color */
+            margin-top: 10px; /* Space from other content */
+        }
+
+        .message-box-content .gemini-btn:hover {
+            background-color: #6c3483;
+        }
+
+        /* New button for Game Analysis feature */
+        .message-box-content .analysis-btn {
+            background-color: #27ae60; /* Emerald green */
+        }
+
+        .message-box-content .analysis-btn:hover {
+            background-color: #229954;
+        }
+
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2.5em;
+            }
+
+            h2 {
+                font-size: 1.2em;
+            }
+
+            .btn {
+                height: 150px; /* Adjusted for smaller screens */
+                width: 150px; /* Adjusted for smaller screens */
+                /* Removed margin here */
+            }
+
+            .btn-container {
+                gap: 15px;
+                padding: 15px;
+            }
+
+            .message-box-content {
+                padding: 30px;
+            }
+
+            .message-box-content h3 {
+                font-size: 1.8em;
+            }
+
+            .message-box-content p {
+                font-size: 1em;
+            }
+        }
+
+        /* Blur Background Overlay (shared by both name and leaderboard overlays) */
+.overlay.blur-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(6px);
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Overlay Inner Content Box */
+.overlay-content {
+    background-color: #222831;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    text-align: center;
+    max-width: 90%;
+    width: 400px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Input box inside overlay */
+.overlay-content input[type="text"] {
+    padding: 10px 15px;
+    font-size: 1em;
+    border-radius: 6px;
+    border: none;
+    outline: none;
+    width: 100%;
+    margin-top: 10px;
+    box-sizing: border-box;
+}
+
+/* Start/close buttons inside overlays */
+.overlay-content button {
+    background-color: #00adb5;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.overlay-content button:hover {
+    background-color: #028f95;
+}
+
+/* Leaderboard list */
+#leaderboardList {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+    text-align: left;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+#leaderboardList li {
+    margin: 8px 0;
+    padding: 8px 12px;
+    background-color: #393e46;
+    border-radius: 6px;
+    font-weight: 500;
+}
+
+/* Responsive overlay adjustments */
+@media (max-width: 500px) {
+    .overlay-content {
+        padding: 20px;
+    }
+
+    .overlay-content h2 {
+        font-size: 1.4em;
+    }
+
+    .overlay-content button {
+        padding: 8px 16px;
+        font-size: 0.95em;
+    }
+}
