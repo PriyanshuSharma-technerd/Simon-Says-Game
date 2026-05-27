@@ -212,7 +212,7 @@ document.addEventListener("touchstart", startGame, { once: true });
             gameSeq = [];
             userSeq = [];
             level = 0;
-            h2.innerText = "Press any key to start the game"; // Reset status message
+           h2.innerText = "Tap anywhere or press any key to start the game"; // Reset status message
         }
         // Name overlay elements
 const nameOverlay = document.getElementById("nameOverlay");
@@ -239,7 +239,7 @@ startGameBtn.addEventListener("click", () => {
         playerName = name;
         nameOverlay.style.display = "none";
         document.body.classList.remove("blur-bg");
-        h2.innerText = "Press any key to start the game";
+        h2.innerText = "Tap anywhere to start the game";
     } else {
         alert("Please enter your name to start the game!");
     }
