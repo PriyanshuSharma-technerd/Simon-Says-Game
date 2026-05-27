@@ -240,20 +240,44 @@ window.addEventListener("DOMContentLoaded", () => {
 
 // Start game on name submission
 startGameBtn.addEventListener("click", () => {
+    alert("Start button clicked"); // TEST
+
     const name = playerNameInput.value.trim();
 
     if (name) {
         playerName = name;
+
         nameOverlay.style.display = "none";
         document.body.classList.remove("blur-bg");
 
-        // Start immediately
         started = true;
+
+        console.log("Starting game...");
+        alert("Game Starting");
+
         levelUp();
     } else {
-        alert("Please enter your name to start the game!");
+        alert("Please enter your name!");
     }
 });
+
+
+
+// startGameBtn.addEventListener("click", () => {
+//     const name = playerNameInput.value.trim();
+
+//     if (name) {
+//         playerName = name;
+//         nameOverlay.style.display = "none";
+//         document.body.classList.remove("blur-bg");
+
+//         // Start immediately
+//         started = true;
+//         levelUp();
+//     } else {
+//         alert("Please enter your name to start the game!");
+//     }
+// });
 
 // Leaderboard Management
 function updateLeaderboard(score) {
