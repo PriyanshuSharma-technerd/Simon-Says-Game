@@ -127,35 +127,23 @@
 
 
         // Event listener to start the game on any key press
-    //     document.addEventListener("keypress", function(e) {
-    //            if (
-    //     !started &&
-    //     e.target.tagName !== "INPUT" &&
-    //     e.target.tagName !== "TEXTAREA"
-    // ) {
-    //     started = true;
-    //     levelUp();
-    // }
+        document.addEventListener("keypress", function(e) {
+               if (
+        !started &&
+        e.target.tagName !== "INPUT" &&
+        e.target.tagName !== "TEXTAREA"
+    ) {
+        started = true;
+        levelUp();
+    }
 
-            // if (!started) {
-            //     console.log("Game is started");
-            //     started = true;
-            //     levelUp();
-            // }
-    //    });
+            if (!started) {
+                console.log("Game is started");
+                started = true;
+                levelUp();
+            }
+        });
 
-// function startGame() {
-//     if (!started) {
-//         started = true;
-//         levelUp();
-//     }
-// }
-
-// // Desktop support
-// document.addEventListener("keypress", startGame);
-
-// // Mobile support
-// document.addEventListener("touchstart", startGame, { once: true });
 
 
         // Function to flash a button (game's turn)
@@ -207,19 +195,13 @@
         }
 
         // Function to reset the game state
-    function resetGame() {
-    started = false;
-    gameSeq = [];
-    userSeq = [];
-    level = 0;
-
-    nameOverlay.style.display = "flex";
-    document.body.classList.add("blur-bg");
-
-    playerNameInput.value = "";
-
-    h2.innerText = "Enter your name and press Start Game";
-}
+        function resetGame() { // Renamed from 'reset' to 'resetGame' for consistency
+            started = false;
+            gameSeq = [];
+            userSeq = [];
+            level = 0;
+            h2.innerText = "Press any key to start the game"; // Reset status message
+        }
         // Name overlay elements
 const nameOverlay = document.getElementById("nameOverlay");
 const startGameBtn = document.getElementById("startGameBtn");
@@ -240,44 +222,16 @@ window.addEventListener("DOMContentLoaded", () => {
 
 // Start game on name submission
 startGameBtn.addEventListener("click", () => {
-    alert("Start button clicked"); // TEST
-
     const name = playerNameInput.value.trim();
-
     if (name) {
         playerName = name;
-
         nameOverlay.style.display = "none";
         document.body.classList.remove("blur-bg");
-
-        started = true;
-
-        console.log("Starting game...");
-        alert("Game Starting");
-
-        levelUp();
+        h2.innerText = "Press any key to start the game";
     } else {
-        alert("Please enter your name!");
+        alert("Please enter your name to start the game!");
     }
 });
-
-
-
-// startGameBtn.addEventListener("click", () => {
-//     const name = playerNameInput.value.trim();
-
-//     if (name) {
-//         playerName = name;
-//         nameOverlay.style.display = "none";
-//         document.body.classList.remove("blur-bg");
-
-//         // Start immediately
-//         started = true;
-//         levelUp();
-//     } else {
-//         alert("Please enter your name to start the game!");
-//     }
-// });
 
 // Leaderboard Management
 function updateLeaderboard(score) {
