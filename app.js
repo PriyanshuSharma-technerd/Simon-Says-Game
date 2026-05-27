@@ -127,22 +127,36 @@
 
 
         // Event listener to start the game on any key press
-        document.addEventListener("keypress", function(e) {
-               if (
-        !started &&
-        e.target.tagName !== "INPUT" &&
-        e.target.tagName !== "TEXTAREA"
-    ) {
-        started = true;
-        levelUp();
-    }
+    //     document.addEventListener("keypress", function(e) {
+    //            if (
+    //     !started &&
+    //     e.target.tagName !== "INPUT" &&
+    //     e.target.tagName !== "TEXTAREA"
+    // ) {
+    //     started = true;
+    //     levelUp();
+    // }
 
             // if (!started) {
             //     console.log("Game is started");
             //     started = true;
             //     levelUp();
             // }
-        });
+    //    });
+
+function startGame() {
+    if (!started) {
+        started = true;
+        levelUp();
+    }
+}
+
+// Desktop support
+document.addEventListener("keypress", startGame);
+
+// Mobile support
+document.addEventListener("touchstart", startGame, { once: true });
+
 
         // Function to flash a button (game's turn)
         function gameFlash(btn) {
